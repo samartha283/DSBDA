@@ -1,0 +1,48 @@
+import pandas as pd 
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns 
+from seaborn import load_dataset
+
+dataset = pd.read_csv("tested.csv")
+
+
+dataset.head() 
+
+tips = load_dataset("tips")
+
+tips.head()
+
+sns.countplot(dataset['Survived'])
+plt.show()
+
+dataset['Sex'].value_counts().plot(kind="pie", autopct="%.2f")
+plt.show()
+
+plt.hist(dataset['Pclass'], bins=5)
+plt.show()
+
+sns.distplot(dataset['Pclass'])
+plt.show()
+
+
+plt.scatter(tips["total_bill"], tips["tip"])
+plt.show()
+
+sns.barplot(dataset['Pclass'])
+plt.show()
+
+
+sns.boxplot(data)
+
+sns.distplot(dataset[dataset['Survived'] == 0]['Age'], hist=False, color="blue") 
+sns.distplot(dataset[dataset['Survived'] == 1]['Age'], hist=False, color ="orange")
+plt.show()
+
+pd.crosstab(dataset['Pclass'], dataset['Survived'])
+
+sns.heatmap(pd.crosstab(dataset['Pclass'], dataset['Survived'])) 
+plt.show()
+
+sns.clustermap(pd.crosstab(dataset['Parch'], dataset['Survived'])) 
+plt.show()
