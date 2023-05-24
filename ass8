@@ -1,21 +1,16 @@
-import pandas as pd 
-import numpy as np
- import matplotlib.pyplot as plt
- import seaborn as sns
 
-dataset = sns.load_dataset('titanic')
- dataset.head()
+dataset.head()
 
-sns.distplot(dataset['fare'])
+sns.distplot(dataset['Fare'])
 plt.show()
 
-sns.distplot(dataset['fare'], kde=False, bins=10)
+sns.distplot(dataset['Fare'], kde=False, bins=10)
 plt.show()
 
-sns.jointplot(x='age', y='fare', data=dataset)
+sns.jointplot(x='Age', y='Fare', data=dataset)
 plt.show()
 
-sns.jointplot(x='age', y='fare', data=dataset, kind='hex')
+sns.jointplot(x='Age', y='Fare', data=dataset, kind='hex')
 plt.show()
 
 dataset  = dataset.dropna()
@@ -23,55 +18,53 @@ dataset  = dataset.dropna()
 sns.pairplot(dataset)
 plt.show(5)
 
-sns.pairplot(dataset, hue='sex')
+sns.pairplot(dataset, hue='Sex')
 plt.show()
 
-sns.rugplot(dataset['fare'])
+sns.rugplot(dataset['Age'])
 plt.show()
 
-sns.barplot(x='sex', y='age', data=dataset)
+sns.barplot(x='Sex', y='', data=dataset)
 plt.show()
 
-sns.barplot(x='sex', y='age', data=dataset, estimator=np.std)
+sns.barplot(x='Sex', y='Age', data=dataset, estimator=np.std)
 plt.show()
 
-sns.countplot(x='sex', data=dataset)
+sns.countplot(x='Sex', data=dataset)
 plt.show()
 
-sns.boxplot(x='sex', y='age', data=dataset)
+sns.boxplot(x='Sex', y='Age', data=dataset)
 plt.show()
 
-sns.boxplot(x='sex', y='age', data=dataset, hue="survived")
+sns.boxplot(x='Sex', y='Age', data=dataset, hue="Survived")
 plt.show()
 
-sns.violinplot(x='sex', y='age', data=dataset)
+sns.violinplot(x='Sex', y='Age', data=dataset)
 plt.show()
 
-sns.violinplot(x='sex', y='age', data=dataset, hue='survived', split=True)
+sns.violinplot(x='Sex', y='Age', data=dataset, hue='Survived', split=True)
 plt.show()
 
-sns.stripplot(x='sex', y='age', data=dataset)
+sns.stripplot(x='Sex', y='Age', data=dataset)
 plt.show()
-sns.stripplot(x='sex', y='age', data=dataset, jitter=True)
-plt.show()
-
-sns.stripplot(x='sex', y='age', data=dataset, jitter=True, hue='survived')
+sns.stripplot(x='Sex', y='Age', data=dataset, jitter=True)
 plt.show()
 
-sns.stripplot(x='sex', y='age', data=dataset, jitter=True, hue='survived', split=True)
+sns.stripplot(x='Sex', y='Age', data=dataset, jitter=True, hue='Survived')
 plt.show()
 
-sns.swarmplot(x='sex', y='age', data=dataset)
+sns.stripplot(x='Sex', y='Age', data=dataset, jitter=True, hue='Survived', split=True)
 plt.show()
 
-sns.swarmplot(x='sex', y='age', data=dataset, hue='survived')
+sns.swarmplot(x='Sex', y='Age', data=dataset)
 plt.show()
 
-sns.swarmplot(x='sex', y='age', data=dataset, hue='survived', split=True)
+sns.swarmplot(x='Sex', y='Age', data=dataset, hue='Survived')
 plt.show()
 
-sns.violinplot(x='sex', y='age', data=dataset) 
-sns.swarmplot(x='sex', y='age', data=dataset, color='black')
+sns.swarmplot(x='Sex', y='Age', data=dataset, hue='Survived', split=True)
 plt.show()
 
-
+sns.violinplot(x='Sex', y='Age', data=dataset) 
+sns.swarmplot(x='Sex', y='Age', data=dataset, color='black')
+plt.show()
