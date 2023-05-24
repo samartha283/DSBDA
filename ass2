@@ -1,0 +1,93 @@
+pract2:  Create an “Academic performance” dataset of students and perform the following operations using Python.
+
+import pandas as pd
+import numpy as np
+
+
+sp = pd.read_csv("student_performance.csv")
+sp.head()
+
+
+sp.isnull()
+
+s = pd.isnull(sp["math score"])
+sp[s]
+
+sp.notnull()
+
+missing_values = ["Na", "na", "srushti"]
+df = pd.read_csv("student_performance.csv", na_values = missing_values
+df
+
+ndf = df
+ndf.fillna(0)
+
+mv = df["math score"].mean()
+df["math score"].fillna(value = mv, inplace = True)
+df
+
+ndf.replace(to_replace = np.nan, value = -99)
+
+ndf.dropna()
+
+new_data = ndf.dropna(axis = 0, how ='any')
+new_data
+
+col = ['math score', 'reading score' , 'writing score','placement score'
+sp.boxplot(col)
+plt.show()
+
+
+print(np.where(sp['math score']>90))
+
+ps = df["placement score"]
+poc = df["placement offer count"]
+plt.scatter(ps, poc)
+plt.xlabel('placement score')
+plt.ylabel('placement offer count')
+plt.show()
+
+z = np.abs(stats.zscore(df['math score']))
+print(z)
+
+threshold = 0.18
+sample_outliers = np.where(z <threshold)
+sample_outliers
+
+sorted_rscore= sorted(df['reading score'])
+sorted_rscore
+q1 = np.percentile(sorted_rscore, 25)
+q3 = np.percentile(sorted_rscore, 75)
+
+IQR = q3-q1
+lwr_bound = q1-(1.5*IQR)
+upr_bound = q3+(1.5*IQR)
+print(lwr_bound, upr_bound)
+
+r_outliers = []
+for i in sorted_rscore:
+  if (i<lwr_bound or i>upr_bound):
+    r_outliers.append(i)
+print(r_outliers)
+
+
+new_df=df
+for i in sample_outliers:
+  new_df.drop(i,inplace=True)
+new_df
+
+ninetieth_percentile = np.percentile(df['math score'], 90) 
+b = np.where(df['math score'] > ninetieth_percentile, ninetieth_percentile
+print("New array:",b)
+
+df.insert(1,"m score",b,True)
+df
+
+col = ['reading score']
+df.boxplot(col)
+median=np.median(sorted_rscore)
+median
+
+refined_df=df
+refined_df['reading score'] = np.where(refined_df['reading score'] >
+refined_df
