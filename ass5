@@ -1,0 +1,38 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score
+
+data = pd.read_csv('Social_Network_Ads.csv')
+X = data.iloc[:, :-1]
+y = data.iloc[:, -1]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+classifier = LogisticRegression()
+classifier.fit(X_train, y_train)
+
+y_pred = classifier.predict(X_test)
+cm = confusion_matrix(y_test, y_pred)
+
+# Extract the true positive (TP), false positive (FP), true negative (TN), and false negative (FN) values
+TP = cm[1, 1]
+FP = cm[0, 1]
+TN = cm[0, 0]
+FN = cm[1, 0]
+
+# Compute accuracy, error rate, precision, and recall
+accuracy = accuracy_score(y_test, y_pred)
+error_rate = 1 - accuracy
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+
+# Print the results
+print("Confusion Matrix:")
+print(cm)
+print("True Positive (TP):", TP)
+print("False Positive (FP):", FP)
+print("True Negative (TN):", TN)
+print("False Negative (FN):", FN)
+print("Accuracy:", accuracy)
+print("Error Rate:", error_rate)
+print("Precision:", precision)
+print("Recall:", recall)
