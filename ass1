@@ -1,0 +1,55 @@
+PRACT  1-  DATA WRANGLING 1 (Perform  operations  on any open source dataset  Import all the required Python Libraries)
+
+
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+weather=pd.read_csv("weatherAUS.csv") 
+weather.head(7)
+ 
+weather.info()
+
+weather.tail(5)
+
+weather.index()
+
+weather.columns()
+
+weather.shape
+
+weather.dtypes
+
+weather.columns.values
+
+weather.describe(include=’all’)
+
+weather.[‘sunshine’]
+
+weather.sort_index(axis=1, ascending=False) 
+
+weather.sort_values(by='Location') 
+
+weather[0:3]
+
+weather.loc[:, ["Location", "Date"]] 
+
+weather.iloc[:,:2] 
+
+weather.iloc[[1,2,4], [0,3]] 
+
+weather.iloc[1:3,:] 
+
+cols_2_4=weather.columns[2:4]
+weather[cols_2_4]  
+
+weather[weather.columns[2:4]].iloc[5:10] 
+
+weather.isnull() 
+
+weather.isnull().sum(axis=1) 
+weather.isnull().sum()
+
+weather.Rainfall.isnull().sum()
