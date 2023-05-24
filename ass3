@@ -1,0 +1,78 @@
+PRACT 3- Descriptive Statistics - Measures of Central Tendency and variability
+
+
+
+import pandas as pd
+ 
+ import numpy as np
+ import matplotlib.pyplot as plt 
+import seaborn as sns
+ from scipy import stats
+ from sklearn import preprocessing
+ from sklearn.linear_model import LinearRegression
+
+
+
+
+emp=pd.read_csv("Employee_Salary_Dataset.csv")
+ emp.head(7)
+
+emp.mean()
+
+emp.loc[:,'Age'].mean()
+
+emp.mean(axis=1)[0:4]
+
+emp.median()
+
+emp.loc[:,'Age'].median()
+
+emp.median(axis=1)[0:4]
+
+m=emp.mode() m.head(5)
+
+emp.loc[:,'Age'].mode()
+emp.min()
+
+emp.loc[:,'Age'].min(skipna = False)
+
+emp.max()
+
+emp.loc[:,'Age'].min(skipna = False)
+
+emp.max()
+
+emp.loc[:,'Age'].min(skipna = False)
+
+emp.std()
+
+emp.loc[:,'Age'].std()
+
+emp.std(axis=1)[0:4]
+
+gp=emp.groupby(['Salary'])['Age'].mean()
+ gp.head(5)
+
+df_u=emp.rename(columns= {'Age':'Emp age'},inplace=False) 
+df_u.head(5)
+
+enc = preprocessing.OneHotEncoder()
+ enc_emp = pd.DataFrame(enc.fit_transform(emp[['Age']]).toarray())
+ enc_emp.head(5)
+emp_encode = df_u.join(enc_emp)
+ emp_encode.head(5)
+
+iris = pd.read_csv("Iris.csv") 
+iris.head(5)
+
+col_names = ['Sepal_Length','Sepal_Width','Petal_Length','Petal_Width’]
+
+irisSet = (iris['Species']== 'Iris-setosa')
+
+print('Iris-setosa') 
+print(iris[irisSet].describe())
+
+irisVer = (iris['Species']== 'Iris-versicolor')
+
+print('Iris-versicolor')
+ print(iris[irisVer].describe())
