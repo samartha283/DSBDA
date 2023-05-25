@@ -4,18 +4,18 @@ PRACT 3- Descriptive Statistics - Measures of Central Tendency and variability
 
 import pandas as pd
  
- import numpy as np
- import matplotlib.pyplot as plt 
+import numpy as np
+import matplotlib.pyplot as plt 
 import seaborn as sns
- from scipy import stats
- from sklearn import preprocessing
- from sklearn.linear_model import LinearRegression
+from scipy import stats
+from sklearn import preprocessing
+from sklearn.linear_model import LinearRegression
 
 
 
 
 emp=pd.read_csv("Employee_Salary_Dataset.csv")
- emp.head(7)
+emp.head(7)
 
 emp.mean()
 
@@ -51,16 +51,16 @@ emp.loc[:,'Age'].std()
 emp.std(axis=1)[0:4]
 
 gp=emp.groupby(['Salary'])['Age'].mean()
- gp.head(5)
+gp.head(5)
 
 df_u=emp.rename(columns= {'Age':'Emp age'},inplace=False) 
 df_u.head(5)
 
 enc = preprocessing.OneHotEncoder()
- enc_emp = pd.DataFrame(enc.fit_transform(emp[['Age']]).toarray())
- enc_emp.head(5)
+enc_emp = pd.DataFrame(enc.fit_transform(emp[['Age']]).toarray())
+enc_emp.head(5)
 emp_encode = df_u.join(enc_emp)
- emp_encode.head(5)
+emp_encode.head(5)
 
 iris = pd.read_csv("Iris.csv") 
 iris.head(5)
